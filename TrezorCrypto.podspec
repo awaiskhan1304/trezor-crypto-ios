@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TrezorCrypto'
-  s.version          = '0.0.9'
+  s.version          = '0.0.3'
   s.summary          = 'Heavily optimized cryptography algorithms for iOS.'
 
   s.homepage         = 'https://github.com/TrustWallet/trezor-crypto-ios'
@@ -12,9 +12,10 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
 
   s.prepare_command = <<-CMD
-    git submodule update --init --recursive
+    sed -i '' -e 's:ed25519-donna/::g' ./**/*.c
+    sed -i '' -e 's:ed25519-donna/::g' ./**/*.h
+    sed -i '' -e 's:USE_ETHEREUM 0:USE_ETHEREUM 1:g' trezor-crypto/options.h
   CMD
-
   s.module_map = 'TrezorCrypto.modulemap'
   search_paths = [
     '"${PODS_ROOT}/trezor-crypto"',
