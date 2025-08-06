@@ -12,9 +12,9 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
 
   s.prepare_command = <<-CMD
-    sed -i '' -e 's:ed25519-donna/::g' ./**/*.c
-    sed -i '' -e 's:ed25519-donna/::g' ./**/*.h
-    sed -i '' -e 's:USE_ETHEREUM 0:USE_ETHEREUM 1:g' trezor-crypto/options.h
+    # sed -i '' -e 's:ed25519-donna/::g' ./**/*.c
+    # sed -i '' -e 's:ed25519-donna/::g' ./**/*.h
+    # sed -i '' -e 's:USE_ETHEREUM 0:USE_ETHEREUM 1:g' trezor-crypto/options.h
   CMD
   s.module_map = 'TrezorCrypto.modulemap'
   search_paths = [
